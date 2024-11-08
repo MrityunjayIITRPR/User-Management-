@@ -55,7 +55,7 @@ const User = ({ usersList }) => {
             )}
           </tr>
           {filterUserList.map((user) => (
-            <tr className="py-10 my-2">
+            <tr className="py-10 my-2" key={user.id}>
               <td className="text-lg py-2 m-2 px-2  border border-blue-200 rounded-lg">
                 {user.id}
               </td>
