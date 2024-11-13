@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import User from "./Components/User";
+import UserTable from "./Components/UserTable";
+import ThemeContext from "./utils/ThemeContext";
 const UserDashboard = () => {
   const [usersList, setUsersList] = useState([]);
+  const [darkTheme, setDarkTheme] = useState([]);
   useEffect(() => {
     fetchUserDetails();
   }, []);
@@ -18,9 +20,17 @@ const UserDashboard = () => {
     );
 
   return (
-    <div>
-      <User usersList={usersList} />
-    </div>
+    <ThemeContext.Provider value={{ darkTheme: darkTheme, setDarkTheme }}>
+      <div>
+        <div className="ml-[18%] my-[1%]">
+          <h1 className="text-3xl font-bold items-center ml-10 text-cyan-700">
+            Employee Details:
+          </h1>
+        </div>
+
+        <UserTable usersList={usersList} />
+      </div>
+    </ThemeContext.Provider>
   );
 };
 
